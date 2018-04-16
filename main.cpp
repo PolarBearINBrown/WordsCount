@@ -1,10 +1,13 @@
 #include "iostream"
 using namespace std;
 
-#include "HEADERS\counting.h"
+#include "HEADERS/counting.h"
+#include "HEADERS/unit_test.h"
 
 int main()
 {
+    Unit_Test Test;
+    Test.Start_Test();
     string Command;
     Counting WC;
     while(true)
@@ -13,7 +16,7 @@ int main()
         cin>>Command;
         if(Command=="c")
         {
-            if(!WC.Get_FileLoc())
+            if(WC.Get_FileLoc())
             {
                 cout<<"Error at file location"<<endl;
                 continue;
@@ -22,7 +25,7 @@ int main()
         }
         else if(Command=="w")
         {
-            if(!WC.Get_FileLoc())
+            if(WC.Get_FileLoc())
             {
                 cout<<"Error at file location"<<endl;
                 continue;

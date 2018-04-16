@@ -13,6 +13,8 @@ private:
 	ifstream File;
 	long long Ans;
     int Check_Str_Words(string Tmp);
+    bool Open_File();
+    void Close_File();
 	
 public:
 	bool Import_FileLoc(string Loc);

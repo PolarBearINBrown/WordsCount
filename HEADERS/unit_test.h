@@ -9,14 +9,14 @@ class Unit_Test
     Counting Test;
 private:
     void Error_Notice(string Str);
-    void Lowercase_Uppercase();
-    void Space_Lowercase();
-    void Space_Uppercase();
-    void Punctions_Numbers();
-    void Punctions_Numbers2();
+    bool Lowercase_Uppercase();
+    bool Space_Lowercase();
+    bool Space_Uppercase();
+    bool Punctions_Numbers();
+    bool Punctions_Numbers2();
 
 public:
-    void Start_Test();
+    bool Start_Test();
 };
 
 

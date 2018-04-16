@@ -2,7 +2,7 @@
 
 int Counting::Check_Str_Words(string Tmp)
 {
-	int ans;
+    int ans=0;
 	bool is_word=false;
 	for(string::iterator i=Tmp.begin();i!=Tmp.end();i++)
 	{
@@ -16,50 +16,63 @@ int Counting::Check_Str_Words(string Tmp)
 			is_word=false;
 		}
 	}
+    ans+=is_word;
 	return ans;
+}
+
+bool Counting::Open_File()
+{
+    File.open(FileLoc.data());
+    if(!File.is_open())
+    {
+        File.close();
+        return true;
+    }
+    File.close();
+    return false;
+}
+
+void Counting::Close_File()
+{
+    File.close();
 }
 
 bool Counting::Import_FileLoc(string Loc)
 {
 	FileLoc=Loc;
-	if(!File.is_open())
-	{
-		return false;
-	}
-	return true;
+    return Open_File();
 }
 
 bool Counting::Get_FileLoc()
 {
 	cin>>FileLoc;
-	File.open(FileLoc.data());
-	if(!File.is_open())
-	{
-		return false;
-	}
-	return true;
+    return Open_File();
 }
 
 long long Counting::Count_Character()
 {
-	Ans=0;
+    File.open(FileLoc.data());
+    Ans=-1;
 	char Tmp;
 	while(!File.eof())
 	{
-		File>>Tmp;
+        File.get(Tmp);
 		Ans++;
 	}
+    File.close();
 	return Ans;
 }
 
 long long Counting::Count_Words()
 {
-	Ans=0;
+    File.open(FileLoc.data());
+    Ans=0;
 	string Tmp;
 	while(!File.eof())
 	{
 		File>>Tmp;
 		Ans+=Check_Str_Words(Tmp);
 	}
+    File.close();
 	return Ans;
 }
