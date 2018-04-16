@@ -1,68 +1,45 @@
 #include "iostream"
-#include "fstream"
-#include "cstdio"
-#include "string"
-#include "cstring"
-#include "algorithm"
 using namespace std;
 
-class Counting
+#include "E:\WordsCount\HEADERS\counting.h"
+
+class Unit_Test
 {
+	Counting Test;
 private:
-	string FileLoc;
-	ifstream File;
-	long long Ans;
-	int Check_Str_Words(string Tmp)
+	void Error_Notice(string Str)
 	{
-		int ans;
-		bool is_word=false;
-		for(string::iterator i=Tmp.begin();i!=Tmp.end();i++)
-		{
-			if((*i>='a'&&*i<='z')||(*i>='A'&&*i<='Z'))
-			{
-				is_word=true;
-			}
-			else
-			{
-				ans+=is_word;
-				is_word=false;
-			}
-		}
-		return ans;
+		cout<<"´íÎó³öÏÖÔÚ£º"<<Str<<endl;
 	}
-	
-public:
-	bool Get_FileLoc()
+	void Lowercase_Uppercase()
 	{
-		cin>>FileLoc;
-		File.open(FileLoc.data());
-		if(!File.is_open())
+		if(!Test.Import_FileLoc("test1.txt"))
 		{
-			return false;
+			Error_Notice("Lowercase_and_Uppercase");
 		}
-		return true;
+		if(Test.Count_Character()!=52)
+		{
+			Error_Notice("Lowercase_and_Uppercase");
+		}
+		if(Test.Count_Words()!=1)
+		{
+			Error_Notice("Lowercase_and_Uppercase");
+		}
 	}
-	long long Count_Character()
+	void Space_Lowercase()
 	{
-		Ans=0;
-		char Tmp;
-		while(!File.eof())
+		if(!Test.Import_FileLoc("test2.txt"))
 		{
-			File>>Tmp;
-			Ans++;
+			Error_Notice("Space_Lowercase");
 		}
-		return Ans;
-	}
-	long long Count_Words()
-	{
-		Ans=0;
-		string Tmp;
-		while(!File.eof())
+		if(Test.Count_Character()!=60)
 		{
-			File>>Tmp;
-			Ans+=Check_Str_Words(Tmp);
+			Error_Notice("Space_Lowercase");
 		}
-		return Ans;
+		if(Test.Count_Words()!=11)
+		{
+			Error_Notice("Space_Lowercase");
+		}
 	}
 };
 
