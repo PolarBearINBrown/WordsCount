@@ -32,6 +32,33 @@ int main()
             }
             cout<<WC.Count_Words()<<endl;
         }
+        else if(Command=="l")
+        {
+            if(WC.Get_FileLoc())
+            {
+                cout<<"Error at file location"<<endl;
+                continue;
+            }
+            cout<<WC.Count_Line()<<endl;
+        }
+        else if(Command=="b")
+        {
+            if(WC.Get_FileLoc())
+            {
+                cout<<"Error at file location"<<endl;
+                continue;
+            }
+            cout<<WC.Count_Blankline()<<endl;
+        }
+        else if(Command=="C")
+        {
+            if(WC.Get_FileLoc())
+            {
+                cout<<"Error at file location"<<endl;
+                continue;
+            }
+            cout<<WC.Count_Commentline()<<endl;
+        }
         else
         {
             cout<<"Error at command"<<endl;

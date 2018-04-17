@@ -1,0 +1,10 @@
+/*it is a test includes two kinds of comments
+//	testing
+	testing
+/*testing
+	testing
+*/
+
+//testing*/
+
+/*//testing*/

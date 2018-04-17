@@ -4,6 +4,7 @@
 #include "iostream"
 #include "fstream"
 #include "string"
+#include "cstring"
 using namespace std;
 
 class Counting
@@ -21,6 +22,9 @@ public:
 	bool Get_FileLoc();
     long long Count_Character();
 	long long Count_Words();
+    long long Count_Line();
+    long long Count_Blankline();
+    long long Count_Commentline();
 };
 
 #endif
