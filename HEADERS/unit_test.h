@@ -17,7 +17,9 @@ private:
     bool Punctions_Numbers2();
     bool BlankLines();
     bool BlankLines2();
-
+    bool Comments_Line1();
+    bool Comments_Line2();
+    bool Comments_Line3();
 
 public:
     bool Start_Test();

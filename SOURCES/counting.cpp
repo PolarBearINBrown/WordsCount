@@ -100,9 +100,13 @@ long long Counting::Count_Blankline()
     Ans=0;
     char Tmp=0;
     bool flag=true;
-    while(!File.eof())
+    while(true)
     {
         File.get(Tmp);
+        if(File.eof())
+        {
+            break;
+        }
         if(Tmp!='\n')
         {
             if(Tmp!=' '&&Tmp!='\t')
@@ -124,16 +128,19 @@ long long Counting::Count_Commentline()
 {
     File.open(FileLoc.data());
     Ans=0;
-    char Tmp[2]={};
+    char jump;
+    char Tmp[3]={};
     int Status=0;
-    long long curline=1;
-    while(!File.eof())
+    while(true)
     {
         Tmp[0]=Tmp[1];
         File.get(Tmp[1]);
+        if(File.eof())
+        {
+            break;
+        }
         if(Tmp[0]=='\n')
         {
-            curline++;
             if(Status==1)
             {
                 Status=0;
@@ -146,21 +153,24 @@ long long Counting::Count_Commentline()
         }
         if(Status==0)
         {
-            if(Tmp=="//")
+            if(!strcmp(Tmp,"//"))
             {
+                File.get(jump);
                 Status=1;
                 Ans++;
             }
-            else if(Tmp=="/*")
+            else if(!strcmp(Tmp,"/*"))
             {
+                File.get(jump);
+                Ans++;
                 Status=2;
             }
         }
         else if(Status==2)
         {
-            if(Tmp=="*/")
+            if(!strcmp(Tmp,"*/"))
             {
-                Ans++;
+                File.get(jump);
                 Status=0;
             }
         }
